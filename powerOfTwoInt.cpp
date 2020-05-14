@@ -29,9 +29,9 @@ int Solution::isPower(int A)
     }
     for(int i=2;i*i<=A;i++)
    {
-       int l=log(A)/log(i);
+       float l=log(A)/log(i);
 
-       if(pow(i,l)==A)
+       if(ceil(l)==floor(l))
        {
            return true;
        }
