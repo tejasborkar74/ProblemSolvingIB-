@@ -1,18 +1,30 @@
 vector<int> Solution::prevSmaller(vector<int> &A)
 {
     vector<int> ans = {-1};
+    stack<int> s;
+    s.push(A[0]);
 
     for(int i=1; i<A.size(); i++)
     {
-        if(A[i-1] < A[i])
-            ans.push_back(A[i-1]);
-        else
-        {
-            int j;
-            for(j=i-1; j>0 && ans[j]>=A[i]; j--);
+       if(s.top()<A[i])
+       {
+           ans.push_back(s.top());
+           s.push(A[i]);
+       }
+       else
+       {
+           while(!s.empty() && s.top()>=A[i])
+           {
+               s.pop();
+           }
+           if(s.empty())ans.push_back(-1);
 
-            ans.push_back(ans[j]);
-        }
+           else
+                ans.push_back(s.top());
+
+
+            s.push(A[i]);
+       }
     }
     return ans;
 }
