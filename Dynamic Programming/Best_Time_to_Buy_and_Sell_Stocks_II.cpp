@@ -12,5 +12,6 @@ int Solution::maxProfit(const vector<int> &A)
         }
     }
 
+
     return ans;
 }
