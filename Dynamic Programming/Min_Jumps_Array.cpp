@@ -1,3 +1,32 @@
+//O(n)
+int Solution::jump(vector<int> &arr)
+{
+    if(arr.size()<=1)return 0;
+    int ladder=arr[0];
+    int stair=arr[0];
+    int jump=1;
+
+    for(int i=1;i<=ladder;i++)
+    {
+        if(i==arr.size()-1)return jump;
+
+        if(arr[i]+i>ladder)
+        {
+            ladder=arr[i]+i;
+        }
+
+        stair--;
+        if(stair==0)
+        {
+            jump++;
+            stair=ladder-i;
+        }
+    }
+
+    return -1;
+
+}
+
 //DP O(n^2)
 int mini (int a,int b)
 {
