@@ -35,7 +35,8 @@ int Solution::uniquePathsWithObstacles(vector<vector<int> > &A)
     {
         for(int j=1;j<c;j++)
         {
-            if(A[i][j]==1)dp[i][j]=0;
+            if(A[i][j]==1)
+                    dp[i][j]=0;
 
             else
                 dp[i][j]=dp[i-1][j] + dp[i][j-1];
