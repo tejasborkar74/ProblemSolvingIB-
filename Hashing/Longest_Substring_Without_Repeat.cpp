@@ -1,3 +1,4 @@
+//Brute force
 int Solution::lengthOfLongestSubstring(string str)
 {
     map<char,int> mp;
@@ -33,6 +34,27 @@ int Solution::lengthOfLongestSubstring(string str)
 
     if(ct>ans)return ct;
 
+
+    return ans;
+}
+
+//Optimised O(n)
+
+int Solution::lengthOfLongestSubstring(string str)
+{
+  int ans=0,i=0,j=-1;
+
+  vector<int> mp(128,-1);
+
+  while(i<str.length())
+  {
+      j=max(j,mp[str[i]]);
+
+      ans=max(ans,i-j);
+
+      mp[str[i]]=i;
+      i++;
+  }
 
     return ans;
 }
