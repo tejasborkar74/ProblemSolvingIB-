@@ -1,3 +1,4 @@
+//O(N^2)
 int Solution::solve(string A)
 {
     int n= A.length();
@@ -21,4 +22,30 @@ int Solution::solve(string A)
     }
 
     return n-1;
+}
+
+//O(n)
+
+int Solution::solve(string A)
+{
+   int j = A.size()-1;
+   int i = 0;
+
+
+   while(j>0)
+   {
+       int i=0;
+       while(A[i] == A[j])
+        {
+            j--;
+            i++;
+        }
+        if(i>=j)return A.size()-(jdx +1);
+        else
+        {
+            j = j -1;
+        }
+   }
+
+   return A.size()-1;
 }
