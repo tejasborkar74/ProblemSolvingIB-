@@ -1,29 +1,24 @@
 int Solution::firstMissingPositive(vector<int> &arr)
 {
-    sort(arr.begin(),arr.end());
+    int n = arr.size();
 
-    int n=arr.size();
+    for(int i=0;i<n;i++)
+    {
+        int j = arr[i]-1;
+           while(arr[i] <= n && arr[i] >0 && arr[i] != arr[j])
+           {
+               swap(arr[i] ,arr[j]);
+               j = arr[i]-1;
+           }
+    }
 
-   int ans=1,i=0;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i] != i+1)
+        {
+            return i+1;
+        }
+    }
 
-   for(i=0;i<n;i++)
-   {
-       if(arr[i]>0)break;
-   }
-
-   if(arr[i]!=1)return 1;
-   i++;
-
-   int j=2;
-
-   for(j=2;j<=arr[n-1];)
-   {
-       if(j<arr[i])return j;
-
-       if(arr[i]==j)j++;
-
-       i++;
-   }
-
-   return j;
+    return n+1;
 }
