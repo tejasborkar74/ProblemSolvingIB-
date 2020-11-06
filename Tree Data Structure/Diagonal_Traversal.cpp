@@ -9,6 +9,10 @@
  */
  //unordered_map<TreeNode* , int> mp;
 
+
+
+ // USING RECURSION
+
  map<int,vector<int> > ans;
 
  void assignvalues(TreeNode *root,int a)
@@ -33,4 +37,35 @@ vector<int> Solution::solve(TreeNode* A)
         arr.insert(arr.end() , v.begin() , v.end());
     }
     return arr;
+}
+
+
+
+
+// USING QUEUE
+
+
+vector<int> Solution::solve(TreeNode* root)
+{
+    queue<TreeNode*> q;
+
+    q.push(root);
+
+    vector<int> ans;
+
+    while(!q.empty())
+    {
+        TreeNode *f = q.front();
+
+        q.pop();
+
+        while(f)
+        {
+            ans.push_back(f->val);
+            if(f->left)q.push(f->left);
+            f = f->right;
+        }
+    }
+
+    return ans;
 }
